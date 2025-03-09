@@ -1,50 +1,85 @@
-import React from 'react'
-import ChatBot from 'react-simple-chatbot';
+import React, { useState } from 'react';
+import chatbotStyles from "./Chatbot.module.css";
+import ChatBot, { ChatBotProvider } from "react-chatbotify";
+import axios from "axios";
+axios.defaults.timeout = 5000;
 
-import { ThemeProvider } from 'styled-components';
-import chatbotStyles from "./ChatBot.module.css";
-// import ChatBot from '../../lib/index';
 
-// all available props
-const theme = {
-  background: '#f5f8fb',
-  fontFamily: 'Helvetica Neue',
-  headerBgColor: '#EF6C00',
-  headerFontColor: '#fff',
-  headerFontSize: '15px',
-  botBubbleColor: '#EF6C00',
-  botFontColor: '#fff',
-  userBubbleColor: '#fff',
-  userFontColor: '#4a4a4a',
+const settings = {
+    general: {
+        PrimaryColor: '#D0F4EA',
+        secondaryColor: '#C73E1D',
+        fontFamily: "Rubik",
+        showFooter: false,
+    },
 };
 
-const steps = [
-    {
-      id: '1',
-      message: 'What is your name?',
-      trigger: '2',
+const styles = {
+    headerStyle: {
+        background: '#C73E1D',
+        color: '#ffffff',
+        padding: '10px',
     },
-    {
-      id: '2',
-      user: true,
-      trigger: '3',
+    chatWindowStyle: {
+        backgroundColor: '#f2f2f2',
     },
-    {
-      id: '3',
-      message: 'Hi {previousValue}, nice to meet you!',
-      end: true,
-    },
-  ];
+};
 
-function Chatbot() {
-  return (
-    <div className={chatbotStyles.centerDiv}>
-        <ThemeProvider theme={theme}>
-            <ChatBot steps={steps} />;
-        </ThemeProvider>
-    </div>
+//const [history, setHistory] = useState([]);
+
+const getResult = async (req) => {
+        let output = axios.post('http://127.0.0.1:3001/chat', {
+            query: req,
+        },)
+        .then( (res)=> {
+            console.log(res)
+
+
+
+            console.log(res.data.reply);
+            return res.data.reply;
+        })
+        .catch( (err)=> {
+            console.log(err)
+            return "Sorry, I'm out of fuel."
+        })
+        return output;
     
-  )
 }
 
-export default Chatbot
+const Chatbot = () => {
+    const flow = {
+        start: {
+            //transition: {duration: 1000},
+            message: "Hi there, This is Mini-programmer, How can I help you?",
+            options: {items: ["Who is Varun?", "What are Varun's Skills?", "What are Varun's Projects", "How can I cantact Varun?" ], reusable:true},
+            UserInput: true,
+            path: "msg"
+        },
+        msg: {
+            chatDisabled: true,
+            //transition: {duration:1000},
+            message: async(params) => {
+                const msg = params.userInput;
+                const output = getResult(msg);
+                return output
+            },
+            chatDisabled: false,
+            path:"msg"
+        }
+    }
+    return (
+        <div className={chatbotStyles.centerDiv}>
+            <ChatBotProvider>
+                <ChatBot
+                    styles={styles}
+                    settings={settings}
+                    flow={flow}
+                    //onSendMessage={handleUserInput}
+                />
+            </ChatBotProvider>
+        </div>
+    );
+};
+
+export default Chatbot;
