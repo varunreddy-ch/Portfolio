@@ -10,12 +10,12 @@ import Chatbot from "./sections/chatbot/Chatbot";
 
 function App() {
   return <>
-    <Chatbot/>
     <Home/>
     <Projects/>
     <Skills/>
     <Contact/>
     <Footer/>
+    <Chatbot/>
   </>
 }
 
