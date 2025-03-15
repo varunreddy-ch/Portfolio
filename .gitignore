@@ -1,4 +1,4 @@
-*assets/
+# *assets/
 node_modules
 server/.env
 main.py
