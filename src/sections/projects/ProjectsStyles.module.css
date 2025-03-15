@@ -9,7 +9,13 @@
         align-self: center;
         background-color: var(--project-card-bg);
         border-radius: 30px;
-        padding: 20px;
+        padding-top: 0px;
+        padding-right: 0px;
+        border-color: var(--project-card-bg);
+    }
+    img:hover {
+        padding-top: 0px;
+        padding-right: 0px;
     }
 
     a {

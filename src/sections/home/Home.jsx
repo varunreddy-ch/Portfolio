@@ -8,6 +8,7 @@ import githubLightIcon from "../../../public/icons8-github-50.png"
 import githubDarkIcon from "../../../public/icons8-github-dark-50.png"
 import { useTheme } from '../../common/ThemeContext.jsx'
 import CV from '../../assets/Resume.pdf'
+import Varun from '../../assets/varun.png'
 function Home() {
     const { theme, toggleTheme} = useTheme()
 
@@ -19,7 +20,7 @@ function Home() {
             {/* IMAGE and THEME ICON */}
             <div className={styles.colorModeContainer}>
                 {/* Image */}
-                <img className={styles.home} src="https://github.com/varunreddy-ch/Portfolio/blob/main/public/varun.png?raw=true" alt="Profile picture" width={300} height={300}/>
+                <img className={styles.home} src={Varun} alt="Profile picture" width={300} height={300}/>
                 <img className={styles.colorMode} src={themeIcon} alt="Color mode icon" onClick={toggleTheme}/>
             </div>
 

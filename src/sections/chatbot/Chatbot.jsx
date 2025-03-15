@@ -3,6 +3,7 @@ import chatbotStyles from "./Chatbot.module.css";
 import ChatBot, { ChatBotProvider } from "react-chatbotify";
 import axios from "axios";
 axios.defaults.timeout = 10000;
+import dotenv from 'dotenv';
 
 
 const settings = {
@@ -30,8 +31,7 @@ const styles = {
 
 //const [history, setHistory] = useState([]);
 
-// const addr = 'http://18.118.207.78:3000/chat'
-const addr = 'http://localhost:3000/chat'
+const addr = process.env.AWS
 const getResult = async (req) => {
         let output = axios.post(addr, {
             query: req,
