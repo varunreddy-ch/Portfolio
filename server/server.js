@@ -14,21 +14,22 @@ app.use(cors());
 
 dotenv.config();
 const hostname = '127.0.0.1';
-const port = 3001;
+const port = 3000;
 
-const GEMINI_API = process.env.GEMINI_API;
-const SYSTEM_INSTRUCTION = process.env.SYSTEM_INSTRUCTION;
+const GEMINI_API = process.env.GEMINI_API
+const SYSTEM_INSTRUCTION = process.env.SYSTEM_INSTRUCTION
 
 const genAI = new GoogleGenerativeAI(GEMINI_API);
 
-app.get('/chat', async(req, res) => {
+app.get('/', async(req, res) => {
     return res.send("Hi")
 })
 
 // console.log(SYSTEM_INSTRUCTION)
 
 app.post('/chat', async (req, res) => {
-    try {
+    console.log("Device requesting for data");
+	try {
         // return res.json({reply: "reply"})
         // console.log(req);
         const userMessage = req.body.query;
@@ -54,6 +55,6 @@ app.post('/chat', async (req, res) => {
       }
 })
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running at port ${port}/`);
 });

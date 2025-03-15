@@ -1,15 +1,13 @@
 import React from 'react'
 import styles from "./homeStyles.module.css"
-import Image from "../../assets/varun.png"
 import sunThemeIcon from "../../../public/icons8-sun-50.png"
 import moonThemeIcon from "../../../public/icons8-moon-50.png"
 import linkedinLightIcon from "../../../public/icons8-linkedin-50.png"
 import linkedinDarkIcon from "../../../public/icons8-linkedin-dark-50.png"
 import githubLightIcon from "../../../public/icons8-github-50.png"
 import githubDarkIcon from "../../../public/icons8-github-dark-50.png"
-import CV from "../../assets/Resume.pdf"
 import { useTheme } from '../../common/ThemeContext.jsx'
-
+import CV from '../../assets/Resume.pdf'
 function Home() {
     const { theme, toggleTheme} = useTheme()
 
@@ -21,7 +19,7 @@ function Home() {
             {/* IMAGE and THEME ICON */}
             <div className={styles.colorModeContainer}>
                 {/* Image */}
-                <img className={styles.home} src={Image} alt="Profile picture" width={300} height={300}/>
+                <img className={styles.home} src="https://github.com/varunreddy-ch/Portfolio/blob/main/public/varun.png?raw=true" alt="Profile picture" width={300} height={300}/>
                 <img className={styles.colorMode} src={themeIcon} alt="Color mode icon" onClick={toggleTheme}/>
             </div>
 

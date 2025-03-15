@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import chatbotStyles from "./Chatbot.module.css";
 import ChatBot, { ChatBotProvider } from "react-chatbotify";
 import axios from "axios";
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 10000;
 
 
 const settings = {
@@ -11,6 +11,9 @@ const settings = {
         secondaryColor: '#C73E1D',
         fontFamily: "Rubik",
         showFooter: false,
+    },
+    header: {
+	title: "Senti AI",
     },
 };
 
@@ -27,8 +30,10 @@ const styles = {
 
 //const [history, setHistory] = useState([]);
 
+// const addr = 'http://18.118.207.78:3000/chat'
+const addr = 'http://localhost:3000/chat'
 const getResult = async (req) => {
-        let output = axios.post('http://127.0.0.1:3001/chat', {
+        let output = axios.post(addr, {
             query: req,
         },)
         .then( (res)=> {
@@ -40,7 +45,8 @@ const getResult = async (req) => {
             return res.data.reply;
         })
         .catch( (err)=> {
-            console.log(err)
+            window.console.log(err)
+	    return err.message
             return "Sorry, I'm out of fuel."
         })
         return output;
@@ -52,7 +58,7 @@ const Chatbot = () => {
         start: {
             //transition: {duration: 1000},
             message: "Hi there, This is Mini-programmer, How can I help you?",
-            options: {items: ["Who is Varun?", "What are Varun's Skills?", "What are Varun's Projects", "How can I cantact Varun?" ], reusable:true},
+            options: {items: ["Who is Varun?", "What are Varun's Skills?", "What are Varun's Projects?", "How can I contact Varun?" ], reusable:true},
             UserInput: true,
             path: "msg"
         },

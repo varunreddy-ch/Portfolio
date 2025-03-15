@@ -23,7 +23,7 @@ function Contact() {
   return (
     <section id="contact" className={styles.container}>
       <h1 className="sectionTitle">Contact</h1>
-      <p id='EmailId'>Email me at <b>vchanda@gmail.com</b></p>
+      <p id='EmailId'>Email me at <b>vchanda1006@gmail.com</b></p>
       <p id="PhoneNo">Text me at <b>+(863)888-2030</b></p>
       <div className={styles.linkedinDiv}>
         <p id="Linkedin"> Connect me at</p>
