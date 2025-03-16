@@ -45,7 +45,7 @@ function Projects() {
                 src={puzzleSolver}
                 link={"https://github.com/varunreddy-ch/jigsaw-puzzle-solver"}
                 title="Jigsaw Puzzle Solver"
-                desc="Leverages AI and computer vision to analyze puzzle piece shapes and features, identifying matching edges to automate assembly, demonstrating AI's potential in solving complex visual challenges."
+                desc="Leverages AI and CV to analyze puzzle piece shapes and features, identifying matching edges to automate assembly, demonstrating AI's potential in solving complex visual challenges."
                 />
             </div>
             {/* Project 5 */}
