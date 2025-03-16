@@ -31,7 +31,7 @@ const styles = {
 
 //const [history, setHistory] = useState([]);
 
-const addr = "http://52.15.180.110:3000/chat"
+const addr = "https://52.15.180.110:3000/chat"
 const getResult = async (req) => {
         let output = axios.post(addr, {
             query: req,
