@@ -27,7 +27,7 @@ function Home() {
             {/* ABOUT */}
             <div className={styles.info}>
                 <h1>Varun Reddy Chanda</h1>
-                <h2>ML Engineer</h2>
+                <h2>AI/ML Engineer</h2>
                 <span>
                     {/* Linkedin */}
                     <a href="https://www.linkedin.com/in/vchanda/" target='_blank'>
